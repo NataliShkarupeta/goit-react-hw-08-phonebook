@@ -8,6 +8,7 @@ import { FrontPage } from './FrontPage/FrontPage';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/selector';
 import { selectIsRegister } from 'redux/selector';
+import { UserMenu } from './UserMenu/UserMenu';
 
 
 
@@ -23,10 +24,13 @@ export const App = () => {
           <Route index element={<FrontPage />} />
           <Route path="register" element={<RegisterForm />} />
           <Route path="login" element={<Login />} />
-          {isRegister && <Route path="contacts" element={<PersonalPage />} />
-           
-          }
-      
+          {isRegister ? (
+            <Route path="contacts" element={<PersonalPage />}>
+              <Route index element={<UserMenu />}></Route>
+            </Route>
+          ) : (
+            <Route path="contacts" element={<div> ooooooooo.... neen register !</div>}/>
+          ) }
         </Route>
       </Routes>
     </>

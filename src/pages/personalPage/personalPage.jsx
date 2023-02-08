@@ -28,6 +28,7 @@ export const PersonalPage = () => {
   }, [dispatch]);
   return (
     <>
+     
       <WrapPrivatNav>
         <Link to={location.state?.from ?? '/'}>
           <ButtonBack>Back</ButtonBack>

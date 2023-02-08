@@ -39,7 +39,7 @@ export const Login = () => {
   return (
     <>
       <Outlet />
-      <Link to={location.state?.from ?? '/'}>
+      <Link to='/'>
         <ButtonBack>Back</ButtonBack>
       </Link>
 
@@ -66,7 +66,7 @@ export const Login = () => {
             />
             <I></I>
           </Field>
-          <Link to="/contacts"  state={{ from: location }}>
+          <Link>
             <SubmitButton>
               <Button onClick={handelSubmit} type="submit" name="submit">
                 <i></i>

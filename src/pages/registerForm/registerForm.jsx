@@ -47,7 +47,7 @@ export const RegisterForm = () => {
 
   return (
     <>
-      <Link to={location.state?.from ?? '/'}>
+      <Link to='/'>
         <ButtonBack>Back</ButtonBack>
       </Link>
 

@@ -2,7 +2,7 @@ import { Input } from './inputName.styled';
 import { Label } from './inputName.styled';
 import { Wrap } from 'components/DefaultStylse.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { cangeArreyByFind } from 'redux/filterNameSlice';
+import { cangeArreyByFind } from 'redux/slice/filterNameSlice';
 
 export const InputFind = () => {
   const filter = useSelector(state => state.filter.filter);
@@ -26,4 +26,3 @@ export const InputFind = () => {
     </Wrap>
   );
 };
-

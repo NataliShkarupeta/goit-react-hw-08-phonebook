@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchContacts, addContacts, deleteContacts } from './operations';
+import { fetchContacts, addContacts, deleteContacts } from '../operations';
 
 const setError = (state, action) => {
   state.isLoading = false;
@@ -13,7 +13,6 @@ const extraActions = [fetchContacts, addContacts, deleteContacts];
 
 const createExtraActions = type =>
   extraActions.map(extraAction => extraAction[type]);
-
 
 const contactSlice = createSlice({
   name: 'contacts',

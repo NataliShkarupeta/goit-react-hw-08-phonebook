@@ -8,9 +8,10 @@ import {
   selectorError,
   selectorFilterArreyContacts,
 } from 'redux/selector';
-import { useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-
+import { ButtonBack } from '../registerForm/registerForm.styled';
+import { useLocation,Link } from 'react-router-dom';
 
 import { fetchContacts } from 'redux/operations';
 
@@ -19,12 +20,16 @@ export const PersonalContacts = () => {
   const isLoading = useSelector(selectorIsLoading);
   const error = useSelector(selectorError);
   const cangeArreyContacts = useSelector(selectorFilterArreyContacts);
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
   return (
     <>
+      <Link to={location.state?.from ?? '/'}>
+        <ButtonBack>Back</ButtonBack>
+      </Link>
       <Title text="Phonebook" />
       <Wrap>
         <InputName />

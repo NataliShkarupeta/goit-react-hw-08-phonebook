@@ -11,11 +11,12 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { ButtonBack } from '../registerForm/registerForm.styled';
-import { useLocation,Link } from 'react-router-dom';
+import { useLocation, Link, Outlet } from 'react-router-dom';
+import { WrapPrivatNav } from './personalPage.styled';
 
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/operations/operationsContacts';
 
-export const PersonalContacts = () => {
+export const PersonalPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectorIsLoading);
   const error = useSelector(selectorError);
@@ -27,9 +28,13 @@ export const PersonalContacts = () => {
   }, [dispatch]);
   return (
     <>
-      <Link to={location.state?.from ?? '/'}>
-        <ButtonBack>Back</ButtonBack>
-      </Link>
+      <WrapPrivatNav>
+        <Link to={location.state?.from ?? '/'}>
+          <ButtonBack>Back</ButtonBack>
+        </Link>
+        <Outlet />
+      </WrapPrivatNav>
+
       <Title text="Phonebook" />
       <Wrap>
         <InputName />

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Welcome = styled.p`
   text-align: center;
   font-size: 50px;
-  padding: 50px;
+  /* padding: 50px; */
   color: #42a2bc;
   /* background-color: #fff0f5; */
 

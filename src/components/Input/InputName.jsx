@@ -3,7 +3,7 @@ import { Input } from './inputName.styled';
 import { Label } from './inputName.styled';
 import { Button } from 'components/Button/Button';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContacts } from 'redux/operations';
+import { addContacts } from 'redux/operations/operationsContacts';
 import { selectorContact } from 'redux/selector';
 
 export const InputName = () => {
@@ -29,7 +29,7 @@ export const InputName = () => {
     } else {
       const cont = {
         name,
-        number
+        number,
       };
       dispatch(addContacts(cont));
       setName('');

@@ -5,7 +5,9 @@ export const selectorFilter = state => state.filter.filter;
 export const selectorContact = state => state.contacts.contacts;
 export const selectorIsLoading = state => state.contacts.isLoading;
 export const selectorError = state => state.contacts.error;
-export const selectIsRegister = state => state.isRegister.isRegister;
+export const selectIsRegister = state => state.user.isRegister;
+export const selectUser = state=>state.user.user;
+export const selectUserName = state => state.user.user.name;
 
 // export const selectorFilterArreyContacts = state => {
 //   const filter = selectorFilter(state);

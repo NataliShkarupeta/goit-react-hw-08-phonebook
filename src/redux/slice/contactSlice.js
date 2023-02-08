@@ -1,5 +1,9 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchContacts, addContacts, deleteContacts } from '../operations';
+import {
+  fetchContacts,
+  addContacts,
+  deleteContacts,
+} from '../operations/operationsContacts';
 
 const setError = (state, action) => {
   state.isLoading = false;

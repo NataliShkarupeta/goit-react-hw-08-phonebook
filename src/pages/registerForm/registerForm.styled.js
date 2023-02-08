@@ -13,7 +13,7 @@ export const ButtonBack = styled.button`
   color: #777;
 `;
 
-export const ButtonCreate = styled.button`
+export const ButtonBlue = styled.button`
   margin: auto;
   display: block;
   background: #42a2bc;

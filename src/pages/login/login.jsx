@@ -8,7 +8,7 @@ import {
   Input,
 } from './login.styled';
 import { ButtonBack } from '../registerForm/registerForm.styled';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/operations/operationUser';
@@ -17,7 +17,7 @@ export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const location = useLocation();
+  // const location = useLocation();
   const dispatch = useDispatch();
 
   const takeInputValue = ({ target: { name, value } }) => {

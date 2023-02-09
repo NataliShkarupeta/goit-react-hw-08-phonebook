@@ -1,6 +1,6 @@
 import { Form, Field, I, Span, Input } from '../login/login.styled';
 import { ButtonBack, ButtonBlue } from './registerForm.styled';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 // import { nanoid } from 'nanoid';
 import { register } from 'redux/operations/operationUser';
@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 export const RegisterForm = () => {
 //   const userInfo = useSelector(selectUser);
   const dispatch = useDispatch();
-  const location = useLocation();
+  // const location = useLocation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

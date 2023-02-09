@@ -1,17 +1,24 @@
 import styled from "styled-components";
 
 export const But = styled.button`
-  display: inline-block;
-  height: 25px;
-  width: 100px;
-  border: 0.5px solid #2e39d6;
-  border-radius: 4px;
-  box-shadow: 0 0 20px #915fac;
-  font-size: 16px;
+width: 100px;
+  display: block;
+  background: #42a2bc;
   color: white;
-  background-color: plum;
-  text-shadow: 1px 1px 1px #000;
+  border-color: transparent;
+  border-radius: 5px;
+  padding: 5px;
+  -webkit-transition: color 0.3s ease-out;
+  transition: color 0.3s ease-out;
+  &:focus {
+    background: #42a2bc;
+    outline: none;
+    -webkit-transition: color 0.3s ease-out;
+    transition: color 0.3s ease-out;
+  }
   &:hover {
-    background-color: #c952db;
+    color: #777;
+    background: #52cfeb;
   }
 `;
+

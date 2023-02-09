@@ -12,7 +12,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { ButtonBack } from '../registerForm/registerForm.styled';
 import { useLocation, Link, Outlet } from 'react-router-dom';
-import { WrapPrivatNav } from './personalPage.styled';
+import {  ContactsBlock, WrapBlock } from './personalPage.styled';
+import { WrapPage } from 'components/ifNotRegister/ifNotRegister.styled';
 
 import { fetchContacts } from 'redux/operations/operationsContacts';
 
@@ -28,23 +29,33 @@ export const PersonalPage = () => {
   }, [dispatch]);
   return (
     <>
-     
-      <WrapPrivatNav>
-        <Link to={location.state?.from ?? '/'}>
-          <ButtonBack>Back</ButtonBack>
-        </Link>
-        <Outlet />
-      </WrapPrivatNav>
-
-      <Title text="Phonebook" />
-      <Wrap>
-        <InputName />
-      </Wrap>
-      <Title text="Contscts" />
-      <InputFind />
-      <Contacts contact={cangeArreyContacts} />
-      {isLoading && <p>Loading contacts...</p>}
-      {error && <p>{error}</p>}
+      <>{error && <p>{error}</p>}</>
+      <WrapPage>
+          <Link to={location.state?.from ?? '/'}>
+            <ButtonBack>Back</ButtonBack>
+          </Link>
+          <Outlet />
+        <ContactsBlock>
+          <WrapBlock >
+            <Title text=" Add contact" />
+            <Wrap>
+              <InputName />
+            </Wrap>
+            <Title text="Find contact" />
+            <InputFind />
+          </WrapBlock>
+          <div>
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : (
+              <>
+                <Title text="Your contacts: " />
+                <Contacts contact={cangeArreyContacts} />
+              </>
+            )}
+          </div>
+        </ContactsBlock>
+      </WrapPage>
     </>
   );
 };

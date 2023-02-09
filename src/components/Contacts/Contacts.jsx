@@ -1,4 +1,4 @@
-import { Item } from './Contacts.styled';
+import { Item,Ul } from './Contacts.styled';
 import { Button } from 'components/Button/Button';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
@@ -11,14 +11,20 @@ export const Contacts = ({ contact }) => {
     return;
   }
 
-  return contact.map(({ name, number, id }) => {
-    return (
-      <Item key={id}>
-        {name} :{number}{' '}
-        <Button text="Delete" onClicked={() => dispatch(deleteContacts(id))} />
-      </Item>
-    );
-  });
+  return (
+    <Ul>
+      {contact.map(({ name, number, id }) => (
+        <Item key={id}>
+          {name} :{number}{' '}
+          <Button
+            text="Delete"
+            onClicked={() => dispatch(deleteContacts(id))}
+          />
+        </Item>
+      ))}
+      
+    </Ul>
+  );
 };
 
 Contacts.propTypes = {

@@ -1,6 +1,6 @@
 import { Form, Field, I, Span, Input } from '../login/login.styled';
 import { ButtonBack, ButtonBlue } from './registerForm.styled';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { WrapPage } from 'components/ifNotRegister/ifNotRegister.styled';
 import { register } from 'redux/operations/operationUser';
@@ -8,9 +8,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRegister } from 'redux/selector';
 import Notiflix from 'notiflix';
 
+
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const isRerister = useSelector(selectIsRegister);
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -47,6 +49,7 @@ export const RegisterForm = () => {
 
   return (
     <>
+      {isRerister && navigate('/contacts')}
       <WrapPage>
         <Link to="/">
           <ButtonBack>Back</ButtonBack>

@@ -15,7 +15,7 @@ export const ContactsBlock = styled.div`
 `;
 
 export const WrapBlock = styled.div`
-  width: 550px;
+  /* width: 550px; */
   margin-right: 50px;
 `;
 

@@ -16,14 +16,12 @@ import { selectIsRegister } from 'redux/selector';
 import { WrapPage } from 'components/ifNotRegister/ifNotRegister.styled';
 import Notiflix from 'notiflix';
 
-
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const isRegister = useSelector(selectIsRegister)
-    const navigate = useNavigate();
- console.log(isRegister);
-  // const location = useLocation();
+  const isRegister = useSelector(selectIsRegister);
+  const navigate = useNavigate();
+  // console.log(isRegister);
   const dispatch = useDispatch();
 
   const takeInputValue = ({ target: { name, value } }) => {
@@ -33,16 +31,16 @@ export const Login = () => {
 
   const handelSubmit = e => {
     e.preventDefault();
-     const user = {
-       email,
-       password,
-     };
+    const user = {
+      email,
+      password,
+    };
     dispatch(logIn(user));
-     <>
-       {!isRegister &&
+    <>
+      {!isRegister &&
         Notiflix.Notify.failure('Log in failed, please try again.')}
-     </>;
-     setEmail('');
+    </>;
+    setEmail('');
     setPassword('');
   };
 

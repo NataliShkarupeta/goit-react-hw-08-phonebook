@@ -39,21 +39,3 @@ export const Navigation = () => {
   );
 };
 
-//  {
-//    !isRegister ? (
-//      <>
-//        <NavigationLink to="/register" state={{ from: location }}>
-//          Registration
-//        </NavigationLink>
-//        <NavigationLink to="/login" state={{ from: location }}>
-//          Login
-//        </NavigationLink>
-//      </>
-//    ) : (
-//      <UserMenu />
-//      //   <NavigationLink to="/contacts" state={{ from: location }}>
-//      //     Contacts List
-//      //     <UserMenu />
-//      //   </NavigationLink>
-//    );
-//  }

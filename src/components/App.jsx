@@ -5,16 +5,18 @@ import { Login } from '../pages/login/login';
 import { PersonalPage } from '../pages/personalPage/personalPage';
 import { Navigation } from './Navigation/Navigation';
 import { FrontPage } from './FrontPage/FrontPage';
-import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/selector';
-import { selectIsRegister } from 'redux/selector';
-import { IfNotRegister } from './ifNotRegister/ifNotRegister';
+import { useDispatch} from 'react-redux';
+// import { IfNotRegister } from './ifNotRegister/ifNotRegister';
+import { useEffect } from 'react';
+import { fetchRefreshUser } from 'redux/operations/operationUser';
+import { PrivatRoute } from './UserMenu/PrivatRoute';
 
 export const App = () => {
-  const user = useSelector(selectUser);
-
-  const isRegister = useSelector(selectIsRegister);
-  console.log(user);
+  const dispatch = useDispatch();
+  
+   useEffect(()=>{
+    dispatch(fetchRefreshUser());
+   },[dispatch])
   return (
     <>
       <Routes>
@@ -22,11 +24,20 @@ export const App = () => {
           <Route index element={<FrontPage />} />
           <Route path="register" element={<RegisterForm />} />
           <Route path="login" element={<Login />} />
-          {isRegister ? (
+          {/* {isRegister ? (
             <Route path="contacts" element={<PersonalPage />} />
           ) : (
             <Route path="contacts" element={<IfNotRegister />} />
-          )}
+          )} */}
+          <Route
+            path="contacts"
+            element={
+              <PrivatRoute>
+                <PersonalPage />
+              </PrivatRoute>
+            }
+          />
+       
         </Route>
       </Routes>
     </>

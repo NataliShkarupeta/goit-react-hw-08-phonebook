@@ -15,9 +15,5 @@ import { selectIsRegister } from "redux/selector";
   ); 
 };
 
-// export const PrivatRoute = () => {
-//   const isRegister = useSelector(selectIsRegister);
-//   return isRegister ? <Outlet/> : <Navigate to="/" />;
-// };
 
 export default PrivatRoute;

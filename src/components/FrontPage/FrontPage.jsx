@@ -20,7 +20,7 @@ const FrontPage = () => {
         if (respons.ok) {
           return respons.json();
         }
-        return Promise.reject(new Error('Sorry no image'));
+        return Promise.reject(new Error(console.log));
       })
       .then(res => setArrImg(res.hits.map(hit => hit.webformatURL)))
       .catch(error => console.log(error));
@@ -41,7 +41,7 @@ const FrontPage = () => {
              alt="...just a nice photo...:)"
            />
            <DefaultText>
-             Contact list is an all in one application for managing contacts.
+             Contact list - is an all in one application for managing contacts.
              <br />
              Access to contacts from any place and device.
              <br />

@@ -4,14 +4,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { WrapPage } from 'components/ifNotRegister/ifNotRegister.styled';
 import { register } from 'redux/operations/operationUser';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectIsRegister } from 'redux/selector';
+import { useDispatch } from 'react-redux';
 import Notiflix from 'notiflix';
 
-
- const RegisterForm = () => {
+const RegisterForm = () => {
   const dispatch = useDispatch();
-  const isRerister = useSelector(selectIsRegister);
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -23,25 +20,26 @@ import Notiflix from 'notiflix';
     if (name === 'password') setPassword(value);
   };
 
+  const fullFields = name !== '' && email !== '' && password !== '';
+
   const handelSubmit = e => {
     e.preventDefault();
-      const user = {
-        name,
-        email,
-        password,
-      };
-      dispatch(register(user))
-        .unwrap()
-        .then(() => navigate('/contacts'))
-        .catch(() =>
-          Notiflix.Notify.failure('Registration failed, please try again.')
-        );
-      setEmail('');
-      setName('');
-      setPassword('');
+    // if(!fullFields) { return Notiflix.Notify.info('all fields must be filled!') }
+    const user = {
+      name,
+      email,
+      password,
+    };
+    dispatch(register(user))
+      .unwrap()
+      .then(() => navigate('/contacts'))
+      .catch(() =>
+        Notiflix.Notify.failure('Registration failed, please try again.')
+      );
+    setEmail('');
+    setName('');
+    setPassword('');
   };
-
-  
 
   return (
     <>
@@ -51,7 +49,14 @@ import Notiflix from 'notiflix';
         </Link>
 
         <Span>Please register</Span>
-        <Form onSubmit={handelSubmit}>
+        <Form
+          //  onSubmit={handelSubmit}
+          onSubmit={
+            fullFields
+              ? { handelSubmit }
+              : Notiflix.Notify.info('all fields must be filled!')
+          }
+        >
           <Field>
             <Input
               type="text"
@@ -86,7 +91,7 @@ import Notiflix from 'notiflix';
             />
             <I></I>
           </Field>
-          {name !== '' && email !== '' && password !== '' ? (
+          {fullFields ? (
             <div>
               <ButtonBlue onClick={handelSubmit} type="submit" name="submit">
                 <i></i>Create account
@@ -129,6 +134,5 @@ import Notiflix from 'notiflix';
     </div>
   </div>
 </>;
-
 
 export default RegisterForm;

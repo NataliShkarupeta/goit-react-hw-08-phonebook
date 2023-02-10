@@ -10,18 +10,15 @@ import {
 import { ButtonBack } from '../registerForm/registerForm.styled';
 import { Link, useNavigate, Outlet } from 'react-router-dom';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { logIn } from 'redux/operations/operationUser';
-import { selectIsRegister } from 'redux/selector';
 import { WrapPage } from 'components/ifNotRegister/ifNotRegister.styled';
 import Notiflix from 'notiflix';
 
  const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const isRegister = useSelector(selectIsRegister);
   const navigate = useNavigate();
-  // console.log(isRegister);
   const dispatch = useDispatch();
 
   const takeInputValue = ({ target: { name, value } }) => {

@@ -5,7 +5,7 @@ import { fetchRefreshUser } from 'redux/operations/operationUser';
 import Navigation from './Navigation/Navigation';
 import FrontPage from './FrontPage/FrontPage';
 import PrivatRoute from './UserMenu/PrivatRoute';
-
+import PublicRoute from './UserMenu/PublicRoute';
 // import { IfNotRegister } from './ifNotRegister/ifNotRegister';
 
 const RegisterForm = lazy(() => import('../pages/registerForm/registerForm'));
@@ -19,13 +19,28 @@ export const App = () => {
   useEffect(() => {
     dispatch(fetchRefreshUser());
   }, [dispatch]);
+  
   return (
     <>
       <Routes>
         <Route path="/" element={<Navigation />}>
           <Route index element={<FrontPage />} />
-          <Route path="register" element={<RegisterForm />} />
-          <Route path="login" element={<Login />} />
+          <Route
+            path="register"
+            element={
+              <PublicRoute>
+                <RegisterForm />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
           <Route
             path="contacts"
             element={

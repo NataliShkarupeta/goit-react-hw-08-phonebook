@@ -27,6 +27,8 @@ import { fetchContacts } from 'redux/operations/operationsContacts';
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
+
+  
   return (
     <>
       <>{error && <p>{error}</p>}</>

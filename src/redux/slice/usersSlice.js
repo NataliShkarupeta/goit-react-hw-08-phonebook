@@ -16,7 +16,6 @@ const usersSlice = createSlice({
   name: 'user',
   initialState: {
     user: { name: null, email: null },
-    // isRegister: false,
     token: null,
     isLoading: false,
     error: null,
@@ -26,7 +25,6 @@ const usersSlice = createSlice({
       .addCase(register.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
-        // state.isRegister = true;
         state.isLoading = false;
         state.error = null;
         console.log(state.user);
@@ -35,14 +33,12 @@ const usersSlice = createSlice({
       .addCase(logIn.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
-        // state.isRegister = true;
         state.isLoading = false;
         state.error = null;
       })
 
       .addCase(logOut.fulfilled, state => {
         state.user = { name: null, email: null };
-        // state.isRegister = false;
         state.isLoading = false;
         state.token = null;
       })

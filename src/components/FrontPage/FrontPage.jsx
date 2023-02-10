@@ -1,16 +1,56 @@
-import { Welcome, Text } from './FrontPage.styled';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import {
+  Welcome,
+  Text,
+  Img,
+  WrapMoreInfo,
+  Hiword,
+  DefaultText,
+} from './FrontPage.styled';
+import { fetchApi } from './service';
 
-export const FrontPage = () => {
-  return (
-    <>
-      <Welcome>Welcome!!!</Welcome>
-      <br />
-      <Text>
-        Our application will make your life easier and more enjoyable!
-      </Text>
-      
-    </>
-  );
+const FrontPage = () => {
+  const [arrImgs, setArrImg] = useState([]);
+
+
+  useEffect(() => {
+    fetchApi()
+      .then(respons => {
+        if (respons.ok) {
+          return respons.json();
+        }
+        return Promise.reject(new Error('Sorry no image'));
+      })
+      .then(res => setArrImg(res.hits.map(hit => hit.webformatURL)))
+      .catch(error => console.log(error));
+  }, []);
+
+   if (arrImgs.length === 0){return}
+     return (
+       <>
+         <Hiword>Welcome -</Hiword>
+         <Welcome> Сontact list</Welcome>
+         <br />
+         <Text>
+           Our application will make your life easier and more enjoyable!
+         </Text>
+         <WrapMoreInfo>
+           <Img
+             src={arrImgs[Math.floor(Math.random() * arrImgs.length)]}
+             alt="...just a nice photo...:)"
+           />
+           <DefaultText>
+             Contact list is an all in one application for managing contacts.
+             <br />
+             Access to contacts from any place and device.
+             <br />
+             You no longer need to worry about the reliable storage of important
+             data!
+           </DefaultText>
+         </WrapMoreInfo>
+       </>
+     );
 };
 
-// https://pixabay.com/ru/photos/%d0%b1%d0%bb%d0%be%d0%ba%d0%bd%d0%be%d1%82-%d0%bb%d0%b8%d1%81%d1%82%d1%8c%d1%8f-%d0%b1%d1%83%d0%bc%d0%b0%d0%b3%d0%b0-%d1%80%d0%b0%d0%b1%d0%be%d1%82%d0%b0-%d0%be%d1%84%d0%b8%d1%81-2984108/
+export default FrontPage;

@@ -17,7 +17,7 @@ import { WrapPage } from 'components/ifNotRegister/ifNotRegister.styled';
 
 import { fetchContacts } from 'redux/operations/operationsContacts';
 
-export const PersonalPage = () => {
+ const PersonalPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectorIsLoading);
   const error = useSelector(selectorError);
@@ -59,3 +59,5 @@ export const PersonalPage = () => {
     </>
   );
 };
+
+export default PersonalPage;

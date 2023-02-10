@@ -9,7 +9,7 @@ import { selectIsRegister } from 'redux/selector';
 import Notiflix from 'notiflix';
 
 
-export const RegisterForm = () => {
+ const RegisterForm = () => {
   const dispatch = useDispatch();
   const isRerister = useSelector(selectIsRegister);
   const navigate = useNavigate();
@@ -30,16 +30,12 @@ export const RegisterForm = () => {
         email,
         password,
       };
-      dispatch(register(user));
-      <>
-        { isRerister
-        ? Notiflix.Notify.success(
-            'You have successfully registered, your personal contact book was available to you'
-          )
-        : Notiflix.Notify.failure('Registration failed, please try again.')
-    }
-      </>
-    
+      dispatch(register(user))
+        .unwrap()
+        .then(() => navigate('/contacts'))
+        .catch(() =>
+          Notiflix.Notify.failure('Registration failed, please try again.')
+        );
       setEmail('');
       setName('');
       setPassword('');
@@ -49,7 +45,6 @@ export const RegisterForm = () => {
 
   return (
     <>
-      {isRerister && navigate('/contacts')}
       <WrapPage>
         <Link to="/">
           <ButtonBack>Back</ButtonBack>
@@ -134,3 +129,6 @@ export const RegisterForm = () => {
     </div>
   </div>
 </>;
+
+
+export default RegisterForm;

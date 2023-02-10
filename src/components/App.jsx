@@ -1,22 +1,24 @@
-import { React } from 'react';
+import { lazy, React, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { RegisterForm } from '../pages/registerForm/registerForm';
-import { Login } from '../pages/login/login';
-import { PersonalPage } from '../pages/personalPage/personalPage';
-import { Navigation } from './Navigation/Navigation';
-import { FrontPage } from './FrontPage/FrontPage';
-import { useDispatch} from 'react-redux';
-// import { IfNotRegister } from './ifNotRegister/ifNotRegister';
-import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { fetchRefreshUser } from 'redux/operations/operationUser';
-import { PrivatRoute } from './UserMenu/PrivatRoute';
+import Navigation from './Navigation/Navigation';
+import FrontPage from './FrontPage/FrontPage';
+import PrivatRoute from './UserMenu/PrivatRoute';
+
+// import { IfNotRegister } from './ifNotRegister/ifNotRegister';
+
+const RegisterForm = lazy(() => import('../pages/registerForm/registerForm'));
+const Login = lazy(() => import('../pages/login/login'));
+const PersonalPage = lazy(() => import('../pages/personalPage/personalPage'));
+
 
 export const App = () => {
   const dispatch = useDispatch();
-  
-   useEffect(()=>{
+
+  useEffect(() => {
     dispatch(fetchRefreshUser());
-   },[dispatch])
+  }, [dispatch]);
   return (
     <>
       <Routes>
@@ -24,11 +26,6 @@ export const App = () => {
           <Route index element={<FrontPage />} />
           <Route path="register" element={<RegisterForm />} />
           <Route path="login" element={<Login />} />
-          {/* {isRegister ? (
-            <Route path="contacts" element={<PersonalPage />} />
-          ) : (
-            <Route path="contacts" element={<IfNotRegister />} />
-          )} */}
           <Route
             path="contacts"
             element={
@@ -37,7 +34,14 @@ export const App = () => {
               </PrivatRoute>
             }
           />
-       
+          {/* <Route
+            path="default"
+            element={
+              <PrivatRoute>
+                <IfNotRegister />
+              </PrivatRoute>
+            }
+          /> */}
         </Route>
       </Routes>
     </>

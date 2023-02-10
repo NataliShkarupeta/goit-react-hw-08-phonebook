@@ -16,7 +16,7 @@ import { selectIsRegister } from 'redux/selector';
 import { WrapPage } from 'components/ifNotRegister/ifNotRegister.styled';
 import Notiflix from 'notiflix';
 
-export const Login = () => {
+ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const isRegister = useSelector(selectIsRegister);
@@ -35,18 +35,17 @@ export const Login = () => {
       email,
       password,
     };
-    dispatch(logIn(user));
-    <>
-      {!isRegister &&
-        Notiflix.Notify.failure('Log in failed, please try again.')}
-    </>;
+    dispatch(logIn(user))
+      .unwrap()
+      .then(() => navigate('/contacts'))
+      .catch(() => Notiflix.Notify.failure('Log in failed, please try again.'));
+    
     setEmail('');
     setPassword('');
   };
 
   return (
     <>
-      {isRegister && navigate('/contacts')}
       <WrapPage>
         <Outlet />
         <Link to="/">
@@ -88,3 +87,6 @@ export const Login = () => {
     </>
   );
 };
+
+
+export default Login;

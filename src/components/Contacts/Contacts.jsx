@@ -7,7 +7,7 @@ import { deleteContacts } from 'redux/operations/operationsContacts';
 export const Contacts = ({ contact }) => {
   const dispatch = useDispatch();
 
-  if (!contact) {
+  if (contact.length === 0) {
     return;
   }
 

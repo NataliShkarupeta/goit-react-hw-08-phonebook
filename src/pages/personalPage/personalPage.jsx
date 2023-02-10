@@ -7,13 +7,15 @@ import {
   selectorIsLoading,
   selectorError,
   selectorFilterArreyContacts,
+  selectorContact,
 } from 'redux/selector';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { ButtonBack } from '../registerForm/registerForm.styled';
 import { useLocation, Link, Outlet } from 'react-router-dom';
-import {  ContactsBlock, WrapBlock } from './personalPage.styled';
+import { ContactsBlock, WrapBlock, Background } from './personalPage.styled';
 import { WrapPage } from 'components/ifNotRegister/ifNotRegister.styled';
+import { Text } from 'components/FrontPage/FrontPage.styled';
 
 import { fetchContacts } from 'redux/operations/operationsContacts';
 
@@ -23,6 +25,7 @@ import { fetchContacts } from 'redux/operations/operationsContacts';
   const error = useSelector(selectorError);
   const cangeArreyContacts = useSelector(selectorFilterArreyContacts);
   const location = useLocation();
+  const contacts = useSelector(selectorContact);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -30,15 +33,15 @@ import { fetchContacts } from 'redux/operations/operationsContacts';
 
   
   return (
-    <>
+    <Background>
       <>{error && <p>{error}</p>}</>
       <WrapPage>
-          <Link to={location.state?.from ?? '/'}>
-            <ButtonBack>Back</ButtonBack>
-          </Link>
-          <Outlet />
+        <Link to={location.state?.from ?? '/'}>
+          <ButtonBack>Back</ButtonBack>
+        </Link>
+        <Outlet />
         <ContactsBlock>
-          <WrapBlock >
+          <WrapBlock>
             <Title text=" Add contact" />
             <Wrap>
               <InputName />
@@ -46,19 +49,23 @@ import { fetchContacts } from 'redux/operations/operationsContacts';
             <Title text="Find contact" />
             <InputFind />
           </WrapBlock>
-          <div>
-            {isLoading ? (
-              <p>Loading...</p>
-            ) : (
-              <>
-                <Title text="Your contacts: " />
-                <Contacts contact={cangeArreyContacts} />
-              </>
-            )}
-          </div>
+          {contacts.length === 0 ? (
+            <Text> You don't have contacts yet. </Text>
+          ) : (
+            <div>
+              {isLoading ? (
+                <p>Loading...</p>
+              ) : (
+                <>
+                  <Title text="Your contacts: " />
+                  <Contacts contact={cangeArreyContacts} />
+                </>
+              )}
+            </div>
+          )}
         </ContactsBlock>
       </WrapPage>
-    </>
+    </Background>
   );
 };
 

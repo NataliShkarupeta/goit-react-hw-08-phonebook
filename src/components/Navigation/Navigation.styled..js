@@ -12,6 +12,7 @@ export const NavigationLink = styled(NavLink)`
 `;
 
 export const Nav = styled.nav`
-padding: 20px;
-margin: 10px;
-`
+  /* background: ${p => p.theme.colors.background}; */
+  padding: 20px;
+  margin: 10px;
+`;

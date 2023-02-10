@@ -5,7 +5,9 @@ import { useState } from 'react';
 import { WrapPage } from 'components/ifNotRegister/ifNotRegister.styled';
 import { register } from 'redux/operations/operationUser';
 import { useDispatch } from 'react-redux';
+import { FaFemale, FaEnvelope, FaFingerprint } from 'react-icons/fa';
 import Notiflix from 'notiflix';
+
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -51,7 +53,7 @@ const RegisterForm = () => {
         </Link>
 
         <Span>Please register</Span>
-        <Form >
+        <Form>
           <Field>
             <Input
               type="text"
@@ -61,7 +63,9 @@ const RegisterForm = () => {
               onChange={takeInputValue}
               required
             />
-            <I></I>
+            <I>
+              <FaFemale />
+            </I>
           </Field>
           <Field>
             <Input
@@ -72,7 +76,10 @@ const RegisterForm = () => {
               onChange={takeInputValue}
               required
             />
-            <I></I>
+
+            <I>
+              <FaEnvelope />
+            </I>
           </Field>
 
           <Field>
@@ -84,7 +91,7 @@ const RegisterForm = () => {
               onChange={takeInputValue}
               required
             />
-            <I></I>
+            <I><FaFingerprint/></I>
           </Field>
           <div>
             <ButtonBlue onClick={handelSubmit} type="submit" name="submit">

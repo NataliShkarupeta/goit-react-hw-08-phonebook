@@ -14,6 +14,7 @@ import { useDispatch} from 'react-redux';
 import { logIn } from 'redux/operations/operationUser';
 import { WrapPage } from 'components/ifNotRegister/ifNotRegister.styled';
 import Notiflix from 'notiflix';
+import { FaArrowRight, FaEnvelope, FaFingerprint } from 'react-icons/fa';
 
  const Login = () => {
   const [email, setEmail] = useState('');
@@ -59,7 +60,9 @@ import Notiflix from 'notiflix';
                 placeholder="Username or email"
                 value={email}
               />
-              <I></I>
+              <I>
+                <FaEnvelope />
+              </I>
             </Field>
             <Field>
               <Input
@@ -69,12 +72,16 @@ import Notiflix from 'notiflix';
                 placeholder="Password"
                 value={password}
               />
-              <I></I>
+              <I>
+                <FaFingerprint />
+              </I>
             </Field>
             <Link>
               <SubmitButton>
                 <Button onClick={handelSubmit} type="submit" name="submit">
-                  <i></i>
+                  <i>
+                    <FaArrowRight />
+                  </i>
                 </Button>
               </SubmitButton>
             </Link>

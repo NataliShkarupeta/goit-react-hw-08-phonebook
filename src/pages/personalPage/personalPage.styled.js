@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import   '../../images/40.jpg';
+
 
 
 export const WrapPrivatNav = styled.div`

@@ -1,11 +1,13 @@
 import { Outlet } from 'react-router-dom';
 import { NavigationLink, Nav } from './Navigation.styled.';
+
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectIsRegister } from 'redux/selector';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { WrapPrivatNav } from 'pages/personalPage/personalPage.styled';
 import { Suspense } from 'react';
+import { FaHouseUser } from 'react-icons/fa';
 
 const Navigation = () => {
   const location = useLocation();
@@ -17,6 +19,10 @@ const Navigation = () => {
         {isRegister ? (
           <WrapPrivatNav>
             <NavigationLink to="/contacts" state={{ from: location }}>
+              <i>
+                <FaHouseUser></FaHouseUser>
+              </i>
+              <br />
               Contact List
             </NavigationLink>
             <UserMenu />

@@ -4,9 +4,8 @@ import { useDispatch } from 'react-redux';
 import { fetchRefreshUser } from 'redux/operations/operationUser';
 import Navigation from './Navigation/Navigation';
 import FrontPage from './FrontPage/FrontPage';
-import PrivatRoute from './UserMenu/PrivatRoute';
-import PublicRoute from './UserMenu/PublicRoute';
-// import { IfNotRegister } from './ifNotRegister/ifNotRegister';
+import PrivatRoute from './PrivetRoute/PrivatRoute';
+import PublicRoute from './PublicRoute/PublicRoute';
 
 const RegisterForm = lazy(() => import('../pages/registerForm/registerForm'));
 const Login = lazy(() => import('../pages/login/login'));
@@ -41,6 +40,7 @@ export const App = () => {
               </PublicRoute>
             }
           />
+
           <Route
             path="contacts"
             element={
@@ -49,14 +49,7 @@ export const App = () => {
               </PrivatRoute>
             }
           />
-          {/* <Route
-            path="default"
-            element={
-              <PrivatRoute>
-                <IfNotRegister />
-              </PrivatRoute>
-            }
-          /> */}
+        
         </Route>
       </Routes>
     </>

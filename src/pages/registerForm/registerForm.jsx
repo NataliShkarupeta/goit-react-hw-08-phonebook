@@ -24,7 +24,9 @@ const RegisterForm = () => {
 
   const handelSubmit = e => {
     e.preventDefault();
-    // if(!fullFields) { return Notiflix.Notify.info('all fields must be filled!') }
+    if (!fullFields) {
+      return Notiflix.Notify.info('All fields must be filled!');
+    }
     const user = {
       name,
       email,
@@ -49,14 +51,7 @@ const RegisterForm = () => {
         </Link>
 
         <Span>Please register</Span>
-        <Form
-          //  onSubmit={handelSubmit}
-          onSubmit={
-            fullFields
-              ? { handelSubmit }
-              : Notiflix.Notify.info('all fields must be filled!')
-          }
-        >
+        <Form >
           <Field>
             <Input
               type="text"
@@ -91,48 +86,16 @@ const RegisterForm = () => {
             />
             <I></I>
           </Field>
-          {fullFields ? (
-            <div>
-              <ButtonBlue onClick={handelSubmit} type="submit" name="submit">
-                <i></i>Create account
-              </ButtonBlue>
-            </div>
-          ) : (
-            <div>
-              <ButtonBlue
-                onClick={handelSubmit}
-                type="submit"
-                name="submit"
-                disabled="disabled"
-              >
-                <i></i>Create account
-              </ButtonBlue>
-            </div>
-          )}
+          <div>
+            <ButtonBlue onClick={handelSubmit} type="submit" name="submit">
+              <i></i>Create account
+            </ButtonBlue>
+          </div>
         </Form>
       </WrapPage>
     </>
   );
 };
-<>
-  <div>
-    <div>
-      <a href="/auth/github">
-        <i></i>
-      </a>
-      <a id="google_login" href="/auth/google_oauth2">
-        <i></i>
-      </a>
-      <a id="facebook_login" href="/auth/facebook">
-        <i></i>
-      </a>
-    </div>
 
-    <div>
-      <span>or</span>
-      <div></div>
-    </div>
-  </div>
-</>;
 
 export default RegisterForm;

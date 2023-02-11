@@ -3,7 +3,7 @@ import {
   fetchContacts,
   addContacts,
   deleteContacts,
-} from '../operations/operationsContacts';
+} from './contactsOperations';
 
 const setError = (state, action) => {
   state.isLoading = false;

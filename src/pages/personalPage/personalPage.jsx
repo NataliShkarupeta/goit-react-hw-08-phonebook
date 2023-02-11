@@ -4,22 +4,22 @@ import { Wrap } from 'components/DefaultStylse.styled';
 import { InputFind } from 'components/Input/InputFind';
 import { Contacts } from 'components/Contacts/Contacts';
 import {
-  selectorIsLoading,
   selectorError,
-  selectorFilterArreyContacts,
   selectorContact,
-} from 'redux/selector';
+  selectorIsLoading,
+} from 'redux/contacts/contactsSelectors';
+ import { selectorFilterArreyContacts } from 'redux/filterContact/filterContactSelectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { ButtonBack } from '../registerForm/registerForm.styled';
 import { useLocation, Link, Outlet } from 'react-router-dom';
 import { ContactsBlock, WrapBlock, Background } from './personalPage.styled';
-import { WrapPage } from 'components/ifNotRegister/ifNotRegister.styled';
-import { Text } from 'components/FrontPage/FrontPage.styled';
+import { WrapPage } from 'components/DefaultStylse.styled';
+import { Text } from 'pages/FrontPage/FrontPage.styled';
 
-import { fetchContacts } from 'redux/operations/operationsContacts';
+import { fetchContacts } from 'redux/contacts/contactsOperations';
 
- const PersonalPage = () => {
+const PersonalPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectorIsLoading);
   const error = useSelector(selectorError);
@@ -31,7 +31,6 @@ import { fetchContacts } from 'redux/operations/operationsContacts';
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  
   return (
     <Background>
       <>{error && <p>{error}</p>}</>

@@ -1,6 +1,10 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { register,logIn ,logOut,fetchRefreshUser} from 'redux/operations/operationUser';
-
+import {
+  register,
+  logIn,
+  logOut,
+  fetchRefreshUser,
+} from 'redux/user/userOperations';
 
 const setError = (state, action) => {
   state.isLoading = false;
@@ -10,7 +14,9 @@ const setPending = state => {
   state.isLoading = true;
 };
 const extraActions = [register, logIn, logOut, fetchRefreshUser];
-const createActions =(type)=>{return extraActions.map(action => action[type])};
+const createActions = type => {
+  return extraActions.map(action => action[type]);
+};
 
 const usersSlice = createSlice({
   name: 'user',
@@ -42,15 +48,12 @@ const usersSlice = createSlice({
         state.isLoading = false;
         state.token = null;
       })
-      .addCase(fetchRefreshUser.fulfilled,(state,{payload})=>{
-        state.user= {...payload}
+      .addCase(fetchRefreshUser.fulfilled, (state, { payload }) => {
+        state.user = { ...payload };
       })
       .addMatcher(isAnyOf(...createActions('pending')), setPending)
       .addMatcher(isAnyOf(...createActions('rejected')), setError);
   },
 });
-
-
-
 
 export default usersSlice.reducer;

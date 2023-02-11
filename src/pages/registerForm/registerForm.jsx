@@ -1,17 +1,15 @@
 import { Form, Field, I, Span, Input } from '../login/login.styled';
 import { ButtonBack, ButtonBlue } from './registerForm.styled';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { WrapPage } from 'components/ifNotRegister/ifNotRegister.styled';
-import { register } from 'redux/operations/operationUser';
+import { WrapPage } from 'components/DefaultStylse.styled';
+import { register } from 'redux/user/userOperations';
 import { useDispatch } from 'react-redux';
 import { FaFemale, FaEnvelope, FaFingerprint } from 'react-icons/fa';
 import Notiflix from 'notiflix';
 
-
 const RegisterForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -36,7 +34,6 @@ const RegisterForm = () => {
     };
     dispatch(register(user))
       .unwrap()
-      .then(() => navigate('/contacts'))
       .catch(() =>
         Notiflix.Notify.failure('Registration failed, please try again.')
       );
@@ -91,7 +88,9 @@ const RegisterForm = () => {
               onChange={takeInputValue}
               required
             />
-            <I><FaFingerprint/></I>
+            <I>
+              <FaFingerprint />
+            </I>
           </Field>
           <div>
             <ButtonBlue onClick={handelSubmit} type="submit" name="submit">
@@ -103,6 +102,5 @@ const RegisterForm = () => {
     </>
   );
 };
-
 
 export default RegisterForm;

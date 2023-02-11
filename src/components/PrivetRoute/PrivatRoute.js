@@ -1,11 +1,12 @@
 import { useSelector } from 'react-redux';
-// import { Navigate } from 'react-router-dom';
-import { selectIsRegister } from 'redux/selector';
-import { IfNotRegister } from 'components/ifNotRegister/ifNotRegister';
+import { Navigate } from 'react-router-dom';
+import { selectIsRegister } from 'redux/user/userSelectors';
 
 const PrivatRoute = ({ children }) => {
   const isRegister = useSelector(selectIsRegister);
-  return isRegister ? children : <IfNotRegister />;
+  if (!isRegister) return <Navigate to={'/'}  />;
+  return  children;
+  
 };
 
 export default PrivatRoute;

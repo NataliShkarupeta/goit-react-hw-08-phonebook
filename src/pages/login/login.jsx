@@ -8,18 +8,17 @@ import {
   Input,
 } from './login.styled';
 import { ButtonBack } from '../registerForm/registerForm.styled';
-import { Link, useNavigate, Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { useState } from 'react';
-import { useDispatch} from 'react-redux';
-import { logIn } from 'redux/operations/operationUser';
-import { WrapPage } from 'components/ifNotRegister/ifNotRegister.styled';
+import { useDispatch } from 'react-redux';
+import { logIn } from 'redux/user/userOperations';
+import { WrapPage } from 'components/DefaultStylse.styled';
 import Notiflix from 'notiflix';
 import { FaArrowRight, FaEnvelope, FaFingerprint } from 'react-icons/fa';
 
- const Login = () => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const takeInputValue = ({ target: { name, value } }) => {
@@ -35,9 +34,8 @@ import { FaArrowRight, FaEnvelope, FaFingerprint } from 'react-icons/fa';
     };
     dispatch(logIn(user))
       .unwrap()
-      .then(() => navigate('/contacts'))
       .catch(() => Notiflix.Notify.failure('Log in failed, please try again.'));
-    
+
     setEmail('');
     setPassword('');
   };
@@ -91,6 +89,5 @@ import { FaArrowRight, FaEnvelope, FaFingerprint } from 'react-icons/fa';
     </>
   );
 };
-
 
 export default Login;

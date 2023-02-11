@@ -1,24 +1,24 @@
 import { lazy, React, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { fetchRefreshUser } from 'redux/operations/operationUser';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRefreshUser } from 'redux/user/userOperations';
+import { selectIsRegister } from 'redux/user/userSelectors';
 import Navigation from './Navigation/Navigation';
-import FrontPage from './FrontPage/FrontPage';
+import FrontPage from '../pages/FrontPage/FrontPage';
 import PrivatRoute from './PrivetRoute/PrivatRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
+import Login from 'pages/login/login';
 
 const RegisterForm = lazy(() => import('../pages/registerForm/registerForm'));
-const Login = lazy(() => import('../pages/login/login'));
 const PersonalPage = lazy(() => import('../pages/personalPage/personalPage'));
-
 
 export const App = () => {
   const dispatch = useDispatch();
-
+ const isRegister = useSelector(selectIsRegister);
   useEffect(() => {
     dispatch(fetchRefreshUser());
   }, [dispatch]);
-  
+
   return (
     <>
       <Routes>
@@ -49,7 +49,7 @@ export const App = () => {
               </PrivatRoute>
             }
           />
-        
+          <Route path="*" element={isRegister ? <PersonalPage /> : <Login />} />
         </Route>
       </Routes>
     </>

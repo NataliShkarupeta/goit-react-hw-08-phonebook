@@ -3,8 +3,8 @@ import { Input } from './inputName.styled';
 import { Label } from './inputName.styled';
 import { Button } from 'components/Button/Button';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContacts } from 'redux/operations/operationsContacts';
-import { selectorContact } from 'redux/selector';
+import { addContacts } from 'redux/contacts/contactsOperations';
+import { selectorContact } from 'redux/contacts/contactsSelectors';
 
 export const InputName = () => {
   const dispatch = useDispatch();

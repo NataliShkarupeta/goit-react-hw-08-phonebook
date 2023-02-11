@@ -1,15 +1,11 @@
-import { Item,Ul } from './Contacts.styled';
+import { Item, Ul } from './Contacts.styled';
 import { Button } from 'components/Button/Button';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteContacts } from 'redux/operations/operationsContacts';
+import { deleteContacts } from 'redux/contacts/contactsOperations';
 
 export const Contacts = ({ contact }) => {
   const dispatch = useDispatch();
-
-  if (contact.length === 0) {
-    return;
-  }
 
   return (
     <Ul>
@@ -22,7 +18,6 @@ export const Contacts = ({ contact }) => {
           />
         </Item>
       ))}
-      
     </Ul>
   );
 };

@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react';
+import { lazy, React, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRefreshUser } from 'redux/user/userOperations';
@@ -8,11 +8,11 @@ import FrontPage from '../pages/FrontPage/FrontPage';
 import PrivatRoute from './PrivetRoute/PrivatRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 import Login from 'pages/login/login';
-import RegisterForm from 'pages/registerForm/registerForm';
-import PersonalPage from 'pages/personalPage/personalPage';
+// import RegisterForm from 'pages/registerForm/registerForm';
+// import PersonalPage from 'pages/personalPage/personalPage';
 
-// const RegisterForm = lazy(() => import('../pages/registerForm/registerForm'));
-// const PersonalPage = lazy(() => import('../pages/personalPage/personalPage'));
+const RegisterForm = lazy(() => import('../pages/registerForm/registerForm'));
+const PersonalPage = lazy(() => import('../pages/personalPage/personalPage'));
 
 export const App = () => {
   const dispatch = useDispatch();

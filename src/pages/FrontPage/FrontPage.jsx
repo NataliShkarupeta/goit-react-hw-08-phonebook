@@ -6,7 +6,7 @@ import {
   Img,
   WrapMoreInfo,
   Hiword,
-  DefaultText,
+  DefaultText
 } from './FrontPage.styled';
 import { fetchApi } from './service';
 

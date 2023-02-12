@@ -36,18 +36,6 @@ export const SubmitButton = styled.div`
   border-radius: 50%;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 0 3px 2px rgba(0, 0, 0, 0.1),
     inset 0 -3px 2px rgba(0, 0, 0, 0.2);
-  /* &:after {
-    content: '';
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    top: -2px;
-    left: 30px;
-
-    background: #ffffff;
-
-    box-shadow: 0 62px white, -32px 31px white;
-  } */
 `;
 
 export const Button = styled.button`

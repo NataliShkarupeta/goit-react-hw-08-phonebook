@@ -36,21 +36,19 @@ export const Img = styled.img`
 `;
 
 export const WrapMoreInfo = styled.div`
-padding: 20px;
-display: flex;
-justify-content: space-evenly;
-gap:20px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
 `;
-export const Hiword= styled.p`
-font-size: 35px;
-font-weight: 100;
-margin: 20px;
-padding: 0;
-
-`
+export const Hiword = styled.p`
+  font-size: 35px;
+  font-weight: 100;
+  margin: 20px;
+  padding: 0;
+`;
 export const DefaultText = styled.p`
-margin: 0;
-padding: 0;
-font-size: 30px;
-
-`
+  margin: 0;
+  padding: 0;
+  font-size: 30px;
+`;

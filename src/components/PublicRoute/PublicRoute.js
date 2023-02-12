@@ -12,6 +12,7 @@ const PublicRoute = () => {
 };
 
 export default PublicRoute;
+
 // import { useSelector } from 'react-redux';
 // import { Navigate } from 'react-router-dom';
 // import { selectIsRegister } from 'redux/user/userSelectors';
